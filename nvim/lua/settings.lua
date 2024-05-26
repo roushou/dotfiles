@@ -14,3 +14,10 @@ opt.splitright = true
 opt.splitbelow = true
 -- preview substitutions live
 opt.inccommand = 'split'
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function(args)
+    require("conform").format({ bufnr = args.buf })
+  end,
+})
