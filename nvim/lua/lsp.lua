@@ -27,6 +27,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<cr>")
 		map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
 		map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>")
+		map("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<cr>")
 	end,
 })
 
