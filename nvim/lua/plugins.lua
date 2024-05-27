@@ -87,6 +87,12 @@ require("lazy").setup({
 				width = 30,
 			},
 			filesystem = {
+				filtered_items = {
+					always_show = {
+						".gitignore",
+						".env",
+					},
+				},
 				follow_current_file = {
 					enabled = true,
 					leave_dirs_open = true,
