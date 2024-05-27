@@ -1,7 +1,7 @@
 require("lazy").setup({
 	{
-		'catppuccin/nvim',
-		name = 'catppuccin',
+		"catppuccin/nvim",
+		name = "catppuccin",
 		lazy = false,
 		priority = 1000,
 		config = function()
@@ -9,47 +9,47 @@ require("lazy").setup({
 		end,
 	},
 	{
-		'echasnovski/mini.nvim',
-		version = '*',
+		"echasnovski/mini.nvim",
+		version = "*",
 		config = function()
-			require('mini.comment').setup()
-			require('mini.pairs').setup()
-			require('mini.notify').setup()
-			require('mini.pick').setup()
-			require('mini.bufremove').setup()
-			require('mini.starter').setup()
-			require('mini.statusline').setup()
-			require('mini.surround').setup()
+			require("mini.comment").setup()
+			require("mini.pairs").setup()
+			require("mini.notify").setup()
+			require("mini.pick").setup()
+			require("mini.bufremove").setup()
+			require("mini.starter").setup()
+			require("mini.statusline").setup()
+			require("mini.surround").setup()
 		end,
 	},
 	{
-		'neovim/nvim-lspconfig',
+		"neovim/nvim-lspconfig",
 		dependencies = {
-			{ 'williamboman/mason.nvim', config = true , opts = { ui= { border = 'single' } }}, -- NOTE: Must be loaded before dependants
-			'williamboman/mason-lspconfig.nvim',
-			'WhoIsSethDaniel/mason-tool-installer.nvim',
+			{ "williamboman/mason.nvim", config = true, opts = { ui = { border = "single" } } }, -- NOTE: Must be loaded before dependants
+			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		config = function()
-			require('lsp')
+			require("lsp")
 		end,
 	},
 	{
-		'mrcjkb/rustaceanvim',
-		version = '^4', -- Recommended
+		"mrcjkb/rustaceanvim",
+		version = "^4", -- Recommended
 		lazy = false, -- This plugin is already lazy
 	},
-	{ 'folke/neodev.nvim', opts = {} },
+	{ "folke/neodev.nvim", opts = {} },
 	{
-		'hrsh7th/nvim-cmp',
-		event ="InsertEnter",
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
 		dependencies = {
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-buffer',
-			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-cmdline',
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
 		},
 		config = function()
-			require('completion')
+			require("completion")
 		end,
 	},
 	{
@@ -57,33 +57,33 @@ require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
 	},
-	{ 'nvim-treesitter/nvim-treesitter' },
+	{ "nvim-treesitter/nvim-treesitter" },
 	{
-		'akinsho/bufferline.nvim',
-		version = '*',
-		dependencies = 'nvim-tree/nvim-web-devicons',
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
 		opts = {
 			options = {
 				show_buffer_close_icons = false,
 				hover = {
 					enable = true,
-					reveal = { 'close' },
+					reveal = { "close" },
 				},
 			},
 		},
 	},
 	{
-		'nvim-neo-tree/neo-tree.nvim',
+		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
 		dependencies = {
-			'nvim-lua/plenary.nvim',
-			'nvim-tree/nvim-web-devicons',
-			'MunifTanjim/nui.nvim',
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
 		},
 		opts = {
 			close_if_last_window = false,
 			window = {
-				position = 'right',
+				position = "right",
 				width = 30,
 			},
 			filesystem = {
@@ -113,13 +113,13 @@ require("lazy").setup({
 			"nvim-lua/plenary.nvim",
 		},
 		keys = {
-			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
-		}
+			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+		},
 	},
-	{ 'lewis6991/gitsigns.nvim', opts = {} },
+	{ "lewis6991/gitsigns.nvim", opts = {} },
 	{
-		'windwp/nvim-ts-autotag',
-		event ="BufReadPre",
+		"windwp/nvim-ts-autotag",
+		event = "BufReadPre",
 		opts = {
 			opts = {
 				enable_close = true,
@@ -129,16 +129,16 @@ require("lazy").setup({
 		},
 	},
 	{
-		'stevearc/conform.nvim',
+		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
-				lua = { 'stylua' },
-				rust = { 'rustfmt' }
-			}
+				lua = { "stylua" },
+				rust = { "rustfmt" },
+			},
 		},
 	},
 }, {
 	ui = {
-		border = 'single',
+		border = "single",
 	},
 })
