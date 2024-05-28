@@ -91,6 +91,7 @@ require("lazy").setup({
 					always_show = {
 						".gitignore",
 						".env",
+						".github",
 					},
 				},
 				follow_current_file = {
