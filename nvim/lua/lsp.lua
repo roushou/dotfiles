@@ -57,7 +57,7 @@ local servers = {
 		},
 	},
 	tsserver = {},
-	solc = {},
+	solidity_ls_nomicfoundation = {},
 }
 
 require("mason").setup()
