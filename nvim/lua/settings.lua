@@ -5,6 +5,7 @@ local opt = vim.opt
 opt.hidden = true
 opt.number = true
 opt.relativenumber = true
+opt.expandtab = true
 opt.tabstop = 2
 opt.shiftwidth = 2
 opt.smartindent = true
@@ -19,5 +20,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
 	callback = function(args)
 		require("conform").format({ bufnr = args.buf })
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "solidity",
+	callback = function()
+		vim.opt_local.shiftwidth = 4
+		vim.opt_local.tabstop = 4
 	end,
 })
