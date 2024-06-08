@@ -57,7 +57,13 @@ require("lazy").setup({
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
 	},
-	{ "nvim-treesitter/nvim-treesitter" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		config = function()
+			local config = require("plugins.treesitter")
+			require("nvim-treesitter.configs").setup(config)
+		end,
+	},
 	{
 		"akinsho/bufferline.nvim",
 		version = "*",
