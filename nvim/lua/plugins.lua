@@ -5,7 +5,9 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd([[colorscheme catppuccin-mocha]])
+			local catppuccin = require("plugins.catppuccin")
+			require("catppuccin").setup(catppuccin.config)
+			vim.cmd([[colorscheme catppuccin]])
 		end,
 	},
 	{
