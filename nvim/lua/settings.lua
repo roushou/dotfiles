@@ -15,6 +15,8 @@ opt.splitright = true
 opt.splitbelow = true
 -- preview substitutions live
 opt.inccommand = "split"
+opt.wrap = true
+opt.linebreak = true
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
