@@ -9,6 +9,8 @@ keybinds {
         bind "Alt t" { NewTab; SwitchToMode "locked"; }
         bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
         bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
+        bind "Alt e" { ToggleFloatingPanes; SwitchToMode "Locked"; }
+        bind "Alt i" { TogglePaneEmbedOrFloating; SwitchToMode "Locked"; }
     }
     resize {
         bind "Ctrl n" { SwitchToMode "Normal"; }
