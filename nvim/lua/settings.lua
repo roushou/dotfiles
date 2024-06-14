@@ -27,6 +27,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+	pattern = "rust",
+	callback = function()
+		vim.lsp.inlay_hint.enable()
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
 	pattern = "go",
 	callback = function()
 		vim.opt_local.shiftwidth = 4
