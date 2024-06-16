@@ -165,6 +165,7 @@ require("lazy").setup({
 			},
 		},
 	},
+	{ "nvim-pack/nvim-spectre" },
 }, {
 	ui = {
 		border = "single",
