@@ -166,6 +166,15 @@ require("lazy").setup({
 		},
 	},
 	{ "nvim-pack/nvim-spectre" },
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {
+			indent = {
+				char = "▏",
+			},
+		},
+	},
 }, {
 	ui = {
 		border = "single",
