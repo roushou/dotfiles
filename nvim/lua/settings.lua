@@ -26,10 +26,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "go",
+	pattern = "*.go",
 	callback = function()
 		require("go.format").goimports()
 	end,
+	group = vim.api.nvim_create_augroup("GoFormat", {}),
 })
 
 vim.api.nvim_create_autocmd("FileType", {
