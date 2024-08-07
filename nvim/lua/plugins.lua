@@ -108,7 +108,7 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 		},
 		opts = {
-			close_if_last_window = false,
+			close_if_last_window = true,
 			window = {
 				position = "right",
 				width = 30,
