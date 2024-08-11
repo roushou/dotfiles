@@ -36,7 +36,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "rust",
 	callback = function()
-		vim.lsp.inlay_hint.enable()
+		-- vim.lsp.inlay_hint.enable()
 	end,
 })
 
