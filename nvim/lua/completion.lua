@@ -8,6 +8,15 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 
+	formatting = {
+		fields = { "abbr", "kind", "menu" },
+		format = function(_, vim_item)
+			vim_item.menu = ""
+			return vim_item
+		end,
+		expandable_indicator = true,
+	},
+
 	-- For an understanding of why these mappings were
 	-- chosen, you will need to read `:help ins-completion`
 	--
