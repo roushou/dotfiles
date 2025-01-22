@@ -1,3 +1,4 @@
+ln -sn ~/dev/dotfiles/i3 ~/.i3
 ln -sn ~/dev/dotfiles/erdtree ~/.config/erdtree
 ln -sn ~/dev/dotfiles/wezterm/wezterm.lua ~/.wezterm.lua
 ln -sn ~/dev/dotfiles/zellij ~/.config/zellij
