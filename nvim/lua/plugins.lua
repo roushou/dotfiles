@@ -33,9 +33,118 @@ require("lazy").setup({
 			{ "williamboman/mason.nvim", config = true, opts = { ui = { border = "single" } } }, -- NOTE: Must be loaded before dependants
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"saghen/blink.cmp",
+		},
+		opts = {
+			servers = {
+				zls = {},
+				ts_ls = {},
+				gopls = {},
+				pylsp = {},
+				tailwindcss = {},
+				lua_ls = {
+					settings = {
+						Lua = {
+							runtime = {
+								version = "LuaJIT",
+							},
+							diagnostics = {
+								globals = { "vim" },
+							},
+							completion = {
+								callSnippet = "Replace",
+							},
+							telemetry = {
+								enable = false,
+							},
+						},
+					},
+				},
+			},
+		},
+		config = function(_, opts)
+			require("lsp")
+
+			local lspconfig = require("lspconfig")
+			for server, config in pairs(opts.servers) do
+				config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
+				lspconfig[server].setup(config)
+			end
+		end,
+	},
+	{
+		"saghen/blink.cmp",
+		dependencies = "rafamadriz/friendly-snippets",
+		version = "*",
+		---@module 'blink.cmp'
+		---@type blink.cmp.Config
+		opts = {
+			-- 'default' for mappings similar to built-in completion
+			-- 'super-tab' for mappings similar to vscode (tab to accept, arrow keys to navigate)
+			-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+			-- See the full "keymap" documentation for information on defining your own keymap.
+			keymap = { preset = "enter" },
+			completion = {
+				menu = {
+					auto_show = function(ctx)
+						return ctx.mode ~= "cmdline"
+					end,
+					-- border = "padded",
+				},
+				documentation = {
+					treesitter_highlighting = true,
+					window = {
+						border = "single",
+					},
+				},
+			},
+			signature = {
+				enabled = true,
+				window = { border = "single" },
+			},
+			appearance = {
+				-- Sets the fallback highlight groups to nvim-cmp's highlight groups
+				-- Useful for when your theme doesn't support blink.cmp
+				-- Will be removed in a future release
+				use_nvim_cmp_as_default = true,
+				-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+				nerd_font_variant = "mono",
+			},
+			sources = {
+				default = { "lsp", "path", "snippets", "buffer" },
+			},
+		},
+		opts_extend = { "sources.default" },
+	},
+	{
+		"xzbdmw/colorful-menu.nvim",
+		dependencies = {
+			"saghen/blink.cmp",
+			"onsails/lspkind.nvim",
 		},
 		config = function()
-			require("lsp")
+			require("blink.cmp").setup({
+				completion = {
+					menu = {
+						draw = {
+							treesitter = { "lsp" },
+							-- We don't need label_description now because label and label_description are already
+							-- combined together in label by colorful-menu.nvim.
+							columns = { { "kind_icon" }, { "label", gap = 1 } },
+							components = {
+								label = {
+									text = function(ctx)
+										return require("colorful-menu").blink_components_text(ctx)
+									end,
+									highlight = function(ctx)
+										return require("colorful-menu").blink_components_highlight(ctx)
+									end,
+								},
+							},
+						},
+					},
+				},
+			})
 		end,
 	},
 	{
@@ -44,6 +153,19 @@ require("lazy").setup({
 		lazy = false, -- This plugin is already lazy
 		config = function()
 			vim.g.rustaceanvim = {
+				server = {
+					settings = {
+						["rust-analyzer"] = {
+							cargo = {
+								allFeatures = false,
+							},
+							checkOnSave = {
+								enable = true,
+								command = "clippy",
+							},
+						},
+					},
+				},
 				tools = {
 					float_win_config = {
 						border = "rounded",
@@ -67,19 +189,6 @@ require("lazy").setup({
 		build = ':lua require("go.install").update_all_sync()',
 	},
 	{ "folke/neodev.nvim", opts = {} },
-	{
-		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
-		dependencies = {
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-cmdline",
-		},
-		config = function()
-			require("completion")
-		end,
-	},
 	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
