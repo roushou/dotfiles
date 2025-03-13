@@ -6,6 +6,22 @@ local map = function(mode, keys, func, opts)
 	vim.keymap.set(mode, keys, func, options)
 end
 
+local toggle_diffview = function(cmd)
+	if next(require("diffview.lib").views) == nil then
+		vim.cmd(cmd)
+	else
+		vim.cmd("DiffviewClose")
+	end
+end
+
+-- local toggle_diffview = function()
+-- 	if next(require("diffview.lib").views) == nil then
+-- 		vim.cmd("DiffviewOpen")
+-- 	else
+-- 		vim.cmd("DiffviewClose")
+-- 	end
+-- end
+
 -- Insert
 map("i", "jj", "<esc>")
 map("i", "jk", "<esc>")
@@ -53,6 +69,8 @@ end)
 -- GitSigns
 map("n", "g[", "<cmd>Git prev_hunk<cr>")
 map("n", "g]", "<cmd>Git next_hunk<cr>")
+-- Diffview
+map("n", "<leader>gv", toggle_diffview)
 
 -- Visual
 map("v", "<", "<gv")

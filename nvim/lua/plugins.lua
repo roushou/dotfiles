@@ -246,21 +246,55 @@ require("lazy").setup({
 		},
 	},
 	{
-		"kdheepak/lazygit.nvim",
-		cmd = {
-			"LazyGit",
-			"LazyGitConfig",
-			"LazyGitCurrentFile",
-			"LazyGitFilter",
-			"LazyGitFilterCurrentFile",
-		},
+		"sindrets/diffview.nvim",
+		cmd = "DiffviewOpen",
+		config = function()
+			local actions = require("diffview.actions")
+
+			require("diffview").setup({
+				keymaps = {
+					view = {
+						{ "n", "q", actions.close, { desc = "Close menu" } },
+					},
+					file_panel = {
+						{ "n", "q", actions.close, { desc = "Close menu" } },
+					},
+					file_history_panel = {
+						{ "n", "q", actions.close, { desc = "Close menu" } },
+					},
+				},
+			})
+		end,
+	},
+	{
+		"NeogitOrg/neogit",
 		dependencies = {
-			"nvim-lua/plenary.nvim",
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- optional - Diff integration
+			-- "echasnovski/mini.pick",
 		},
+		config = true,
 		keys = {
-			{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "LazyGit" },
 		},
 	},
+
+	-- {
+	-- 	"kdheepak/lazygit.nvim",
+	-- 	cmd = {
+	-- 		"LazyGit",
+	-- 		"LazyGitConfig",
+	-- 		"LazyGitCurrentFile",
+	-- 		"LazyGitFilter",
+	-- 		"LazyGitFilterCurrentFile",
+	-- 	},
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 	},
+	-- 	keys = {
+	-- 		{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+	-- 	},
+	-- },
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {},
