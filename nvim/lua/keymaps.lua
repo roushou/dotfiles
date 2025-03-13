@@ -50,6 +50,9 @@ end)
 vim.keymap.set("n", "gr", function()
 	require("trouble").toggle("lsp_references")
 end)
+-- GitSigns
+map("n", "g[", "<cmd>Git prev_hunk<cr>")
+map("n", "g]", "<cmd>Git next_hunk<cr>")
 
 -- Visual
 map("v", "<", "<gv")
