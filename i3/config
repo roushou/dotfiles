@@ -12,7 +12,7 @@ default_border pixel 1
 default_floating_border normal
 
 exec --no-startup-id "setxkbmap -option ctrl:nocaps"
-exec --no-startup-id "xset r rate 220 100"
+exec --no-startup-id "xset r rate 200 100"
 exec --no-startup-id "feh --bg-scale ~/Pictures/wallpapers/gibli.png"
 
 # Hide borders
