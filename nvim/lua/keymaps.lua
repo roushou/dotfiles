@@ -75,3 +75,5 @@ map("n", "<leader>gv", toggle_diffview)
 -- Visual
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+map("v", "<leader>y", '"+y"')
+map("v", "<leader>p", '"+p"')
