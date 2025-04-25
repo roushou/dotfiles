@@ -267,34 +267,22 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"NeogitOrg/neogit",
-		dependencies = {
-			"nvim-lua/plenary.nvim", -- required
-			"sindrets/diffview.nvim", -- optional - Diff integration
-			-- "echasnovski/mini.pick",
+		"kdheepak/lazygit.nvim",
+		lazy = true,
+		cmd = {
+			"LazyGit",
+			"LazyGitConfig",
+			"LazyGitCurrentFile",
+			"LazyGitFilter",
+			"LazyGitFilterCurrentFile",
 		},
-		config = true,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
 		keys = {
-			{ "<leader>gg", "<cmd>Neogit<cr>", desc = "LazyGit" },
+			{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
 		},
 	},
-
-	-- {
-	-- 	"kdheepak/lazygit.nvim",
-	-- 	cmd = {
-	-- 		"LazyGit",
-	-- 		"LazyGitConfig",
-	-- 		"LazyGitCurrentFile",
-	-- 		"LazyGitFilter",
-	-- 		"LazyGitFilterCurrentFile",
-	-- 	},
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 	},
-	-- 	keys = {
-	-- 		{ "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-	-- 	},
-	-- },
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {},
