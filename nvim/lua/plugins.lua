@@ -118,6 +118,33 @@ require("lazy").setup({
 		opts_extend = { "sources.default" },
 	},
 	{
+		"bassamsdata/namu.nvim",
+		config = function()
+			require("namu").setup({
+				-- Enable the modules you want
+				namu_symbols = {
+					enable = true,
+					options = {
+						display = {
+							format = "tree_guides",
+						},
+					},
+				},
+				-- Optional: Enable other modules if needed
+				ui_select = { enable = false }, -- vim.ui.select() wrapper
+			})
+			-- === Suggested Keymaps: ===
+			vim.keymap.set("n", "<leader>ss", ":Namu symbols<cr>", {
+				desc = "Jump to LSP symbol",
+				silent = true,
+			})
+			vim.keymap.set("n", "<leader>sw", ":Namu workspace<cr>", {
+				desc = "LSP Symbols - Workspace",
+				silent = true,
+			})
+		end,
+	},
+	{
 		"xzbdmw/colorful-menu.nvim",
 		dependencies = {
 			"saghen/blink.cmp",
@@ -154,6 +181,7 @@ require("lazy").setup({
 			"nvim-telescope/telescope.nvim",
 			"MunifTanjim/nui.nvim",
 			"folke/snacks.nvim", -- (optional) to show previews
+			"wojciech-kulik/xcodebuild-nvim-preview",
 		},
 		config = function()
 			require("xcodebuild").setup({
@@ -330,6 +358,10 @@ require("lazy").setup({
 				char = "▏",
 			},
 		},
+	},
+	{
+		"keith/swift.vim",
+		config = function() end,
 	},
 }, {
 	ui = {

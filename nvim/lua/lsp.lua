@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end
 
 		if client.server_capabilities.hoverProvider then
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
+			map("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
 		end
 
 		vim.diagnostic.config({
