@@ -3,6 +3,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.font = wezterm.font("JetBrains Mono")
+config.font_size = 20.0
 config.color_scheme = "Catppuccin Mocha"
 config.enable_tab_bar = false
 config.default_cursor_style = "SteadyBlock"
@@ -12,6 +13,11 @@ config.keys = {
 	{
 		key = "P",
 		mods = "CTRL",
+		action = wezterm.action.DisableDefaultAssignment,
+	},
+	{
+		key = "t",
+		mods = "CMD",
 		action = wezterm.action.DisableDefaultAssignment,
 	},
 }
