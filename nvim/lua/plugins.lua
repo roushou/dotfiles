@@ -37,12 +37,6 @@ require("lazy").setup({
 		},
 		opts = {
 			servers = {
-				zls = {},
-				ts_ls = {},
-				gopls = {},
-				pylsp = {},
-				tailwindcss = {},
-				sourcekit = {},
 				lua_ls = {
 					settings = {
 						Lua = {

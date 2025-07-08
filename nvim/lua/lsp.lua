@@ -31,4 +31,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
+vim.lsp.enable("rust_analyzer", {
+	settings = {
+		["rust_analyzer"] = {},
+	},
+})
+
+vim.lsp.enable("gopls")
+
+vim.lsp.enable("basedpyright")
+
+vim.lsp.config("ruff", {
+	init_options = {
+		settings = {},
+	},
+})
+
+vim.lsp.enable("ts_ls")
+vim.lsp.enable("tailwindcss")
+vim.lsp.enable("sourcekit")
+vim.lsp.enable("zls")
+
 require("mason").setup()
