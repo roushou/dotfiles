@@ -69,6 +69,8 @@ end)
 -- GitSigns
 map("n", "g[", "<cmd>Git prev_hunk<cr>")
 map("n", "g]", "<cmd>Git next_hunk<cr>")
+map("n", "<leader>gp", "<cmd>Git preview_hunk_inline<cr>")
+map("n", "<leader>gd", "<cmd>Git diffthis<cr>")
 -- Diffview
 map("n", "<leader>gv", toggle_diffview)
 
