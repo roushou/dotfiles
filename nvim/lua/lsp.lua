@@ -31,12 +31,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	end,
 })
 
-vim.lsp.enable("rust_analyzer", {
-	settings = {
-		["rust_analyzer"] = {},
-	},
-})
-
 vim.lsp.enable("gopls")
 
 vim.lsp.enable("basedpyright")
