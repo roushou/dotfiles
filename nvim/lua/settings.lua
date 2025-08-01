@@ -17,6 +17,7 @@ opt.splitbelow = true
 opt.inccommand = "split"
 opt.wrap = true
 opt.linebreak = true
+opt.winborder = "single"
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
