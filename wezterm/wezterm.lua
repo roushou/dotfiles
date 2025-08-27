@@ -8,7 +8,7 @@ wezterm.on("gui-startup", function(cmd)
 end)
 
 config.font = wezterm.font("JetBrains Mono")
-config.font_size = 20.0
+config.font_size = 18.0
 config.color_scheme = "Catppuccin Mocha"
 config.enable_tab_bar = false
 config.default_cursor_style = "SteadyBlock"
