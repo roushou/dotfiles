@@ -14,6 +14,12 @@ config.enable_tab_bar = false
 config.default_cursor_style = "SteadyBlock"
 config.warn_about_missing_glyphs = false
 config.window_decorations = "RESIZE"
+config.window_padding = {
+	left = 0,
+	right = 0,
+	top = 10,
+	bottom = 10,
+}
 
 config.keys = {
 	{
