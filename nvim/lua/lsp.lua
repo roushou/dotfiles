@@ -43,7 +43,7 @@ vim.lsp.config("ruff", {
 
 vim.lsp.enable("ts_ls")
 vim.lsp.enable("tailwindcss")
-vim.lsp.enable("sourcekit")
+-- vim.lsp.enable("sourcekit")
 vim.lsp.enable("zls")
 vim.lsp.enable("protols")
 vim.lsp.enable("wgsl_analyzer")
@@ -52,5 +52,13 @@ vim.lsp.enable("svelte")
 vim.lsp.enable("jsonls")
 vim.lsp.enable("cssls")
 vim.lsp.enable("tombi")
+vim.lsp.config("luau_lsp", {
+	cmd = {
+		"luau-lsp",
+		"lsp",
+		"--definitions=" .. vim.fn.getcwd() .. "/.luau/globalTypes.d.luau",
+	},
+})
+vim.lsp.enable("clangd")
 
 require("mason").setup()
