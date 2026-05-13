@@ -1,3 +1,11 @@
+local map = function(mode, keys, func, opts)
+	local options = { noremap = true, silent = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.keymap.set(mode, keys, func, options)
+end
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -7,14 +15,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.lsp.with(vim.lsp.handlers.hover, { border = "single", title = "hover" })
 		vim.lsp.handlers["textDocument/signatureHelp"] =
 			vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" })
-
-		local map = function(mode, keys, func, opts)
-			local options = { noremap = true, silent = true }
-			if opts then
-				options = vim.tbl_extend("force", options, opts)
-			end
-			vim.keymap.set(mode, keys, func, options)
-		end
 
 		if client.server_capabilities.hoverProvider then
 			map("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
