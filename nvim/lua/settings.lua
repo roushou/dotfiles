@@ -18,6 +18,8 @@ opt.inccommand = "split"
 opt.wrap = true
 opt.linebreak = true
 opt.winborder = "single"
+opt.laststatus = 3
+-- opt.cmdheight = 0
 
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
@@ -45,7 +47,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "rust",
 	callback = function()
-		-- vim.lsp.inlay_hint.enable()
+		vim.lsp.inlay_hint.enable(false)
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "cpp",
+	callback = function()
+		vim.lsp.inlay_hint.enable(true)
 	end,
 })
 
@@ -80,3 +89,5 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.tabstop = 4
 	end,
 })
+
+vim.filetype.add({ extension = { mdx = "mdx" } })
