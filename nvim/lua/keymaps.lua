@@ -73,6 +73,10 @@ map("n", "<leader>gp", "<cmd>Git preview_hunk_inline<cr>")
 map("n", "<leader>gd", "<cmd>Git diffthis<cr>")
 -- Diffview
 map("n", "<leader>gv", toggle_diffview)
+-- Treesitter Context
+map("n", "[c", function()
+	require("treesitter-context").go_to_context(vim.v.count1)
+end)
 
 -- Visual
 map("v", "<", "<gv")

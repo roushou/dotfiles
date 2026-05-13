@@ -11,6 +11,12 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"sourcegraph/amp.nvim",
+		branch = "main",
+		lazy = false,
+		opts = { auto_start = true, log_level = "info" },
+	},
+	{
 		"echasnovski/mini.nvim",
 		version = "*",
 		config = function()
@@ -36,6 +42,7 @@ require("lazy").setup({
 			"saghen/blink.cmp",
 		},
 		opts = {
+			inlay_hints = { enabled = false },
 			servers = {
 				lua_ls = {
 					settings = {
@@ -70,7 +77,7 @@ require("lazy").setup({
 	{
 		"saghen/blink.cmp",
 		dependencies = "rafamadriz/friendly-snippets",
-		version = "*",
+		version = "1.*",
 		---@module 'blink.cmp'
 		---@type blink.cmp.Config
 		opts = {
@@ -81,15 +88,25 @@ require("lazy").setup({
 			keymap = { preset = "enter" },
 			completion = {
 				menu = {
-					auto_show = function(ctx)
-						return ctx.mode ~= "cmdline"
-					end,
+					-- auto_show = function(ctx)
+					-- 	return ctx.mode ~= "cmdline"
+					-- end,
 					-- border = "padded",
+					min_width = 20,
+					draw = {
+						padding = 1,
+						gap = 1,
+						-- columns = {
+						-- 	{ "label", "label_description", gap = 1 },
+						-- 	{ "kind_icon", "kind", gap = 1 },
+						-- },
+					},
 				},
 				documentation = {
+					auto_show = true,
 					treesitter_highlighting = true,
 					window = {
-						border = "single",
+						border = "rounded",
 					},
 				},
 			},
@@ -101,13 +118,14 @@ require("lazy").setup({
 				-- Sets the fallback highlight groups to nvim-cmp's highlight groups
 				-- Useful for when your theme doesn't support blink.cmp
 				-- Will be removed in a future release
-				use_nvim_cmp_as_default = true,
+				-- use_nvim_cmp_as_default = true,
 				-- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
 				nerd_font_variant = "mono",
 			},
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
 			},
+			fuzzy = { implementation = "prefer_rust_with_warning" },
 		},
 		opts_extend = { "sources.default" },
 	},
@@ -132,7 +150,7 @@ require("lazy").setup({
 				desc = "Jump to LSP symbol",
 				silent = true,
 			})
-			vim.keymap.set("n", "<leader>sw", ":Namu workspace<cr>", {
+			vim.keymap.set("n", "<Bslash>", ":Namu workspace<cr>", {
 				desc = "LSP Symbols - Workspace",
 				silent = true,
 			})
@@ -185,12 +203,12 @@ require("lazy").setup({
 	},
 	{
 		"mrcjkb/rustaceanvim",
-		version = "^5", -- Recommended
+		version = "^6", -- Recommended
 		lazy = false, -- This plugin is already lazy
 		config = function()
 			vim.g.rustaceanvim = {
 				server = {
-					settings = {
+					default_settings = {
 						["rust-analyzer"] = {
 							cargo = {
 								allFeatures = false,
@@ -232,10 +250,20 @@ require("lazy").setup({
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
 		config = function()
 			local config = require("plugins.treesitter")
 			require("nvim-treesitter.configs").setup(config)
 		end,
+	},
+	{
+		"nvim-treesitter/nvim-treesitter-context",
+		opts = {},
+	},
+	{
+		"chrisgrieser/nvim-lsp-endhints",
+		event = "LspAttach",
+		opts = {},
 	},
 	{
 		"akinsho/bufferline.nvim",

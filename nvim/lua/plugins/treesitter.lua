@@ -1,6 +1,6 @@
 local M = {
 	-- A list of parser names, or "all" (the five listed parsers should always be installed)
-	ensure_installed = { "lua", "vimdoc" },
+	ensure_installed = { "lua", "vimdoc", "rust", "go", "python" },
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,
@@ -34,6 +34,48 @@ local M = {
 		-- Using this option may slow down your editor, and you may see some duplicate highlights.
 		-- Instead of true it can also be a list of languages
 		additional_vim_regex_highlighting = false,
+	},
+
+	indent = {
+		enable = true,
+	},
+
+	textobjects = {
+		select = {
+			enable = true,
+			lookahead = true,
+			keymaps = {
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ac"] = "@class.outer",
+			},
+		},
+
+		lsp_interop = {
+			enable = true,
+			border = "none",
+			floating_preview_opts = {},
+			peek_definition_code = {
+				["<leader>df"] = "@function.outer",
+				["<leader>dF"] = "@class.outer",
+			},
+		},
+
+		move = {
+			enable = true,
+			set_jumps = true, -- whether to set jumps in the jumplist
+			goto_next_start = {
+				["]m"] = "@function.outer",
+				-- You can use regex matching (i.e. lua pattern) and/or pass a list in a "query" key to group multiple queries.
+				-- ["]o"] = "@loop.*",
+				["]o"] = { query = { "@loop.inner", "@loop.outer" } },
+				--
+				-- You can pass a query group to use query from `queries/<lang>/<query_group>.scm file in your runtime path.
+				-- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
+				["]s"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
+				["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+			},
+		},
 	},
 }
 
