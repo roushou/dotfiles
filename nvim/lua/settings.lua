@@ -29,7 +29,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "cpp",
+	pattern = { "cpp", "wgsl", "go", "swift", "solidity" },
 	callback = function()
 		vim.opt_local.shiftwidth = 4
 		vim.opt_local.tabstop = 4
@@ -55,38 +55,6 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = "cpp",
 	callback = function()
 		vim.lsp.inlay_hint.enable(true)
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "wgsl",
-	callback = function()
-		vim.opt_local.shiftwidth = 4
-		vim.opt_local.tabstop = 4
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "go",
-	callback = function()
-		vim.opt_local.shiftwidth = 4
-		vim.opt_local.tabstop = 4
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "swift",
-	callback = function()
-		vim.opt_local.shiftwidth = 4
-		vim.opt_local.tabstop = 4
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "solidity",
-	callback = function()
-		vim.opt_local.shiftwidth = 4
-		vim.opt_local.tabstop = 4
 	end,
 })
 
