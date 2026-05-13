@@ -81,5 +81,5 @@ end)
 -- Visual
 map("v", "<", "<gv")
 map("v", ">", ">gv")
-map("v", "<leader>y", '"+y"')
-map("v", "<leader>p", '"+p"')
+map("v", "<leader>y", '"+y')
+map("v", "<leader>p", '"+p')
