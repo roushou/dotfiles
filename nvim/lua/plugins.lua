@@ -96,10 +96,18 @@ require("lazy").setup({
 					draw = {
 						padding = 1,
 						gap = 1,
-						-- columns = {
-						-- 	{ "label", "label_description", gap = 1 },
-						-- 	{ "kind_icon", "kind", gap = 1 },
-						-- },
+						treesitter = { "lsp" },
+						columns = { { "kind_icon" }, { "label", gap = 1 } },
+						components = {
+							label = {
+								text = function(ctx)
+									return require("colorful-menu").blink_components_text(ctx)
+								end,
+								highlight = function(ctx)
+									return require("colorful-menu").blink_components_highlight(ctx)
+								end,
+							},
+						},
 					},
 				},
 				documentation = {
@@ -162,30 +170,6 @@ require("lazy").setup({
 			"saghen/blink.cmp",
 			"onsails/lspkind.nvim",
 		},
-		config = function()
-			require("blink.cmp").setup({
-				completion = {
-					menu = {
-						draw = {
-							treesitter = { "lsp" },
-							-- We don't need label_description now because label and label_description are already
-							-- combined together in label by colorful-menu.nvim.
-							columns = { { "kind_icon" }, { "label", gap = 1 } },
-							components = {
-								label = {
-									text = function(ctx)
-										return require("colorful-menu").blink_components_text(ctx)
-									end,
-									highlight = function(ctx)
-										return require("colorful-menu").blink_components_highlight(ctx)
-									end,
-								},
-							},
-						},
-					},
-				},
-			})
-		end,
 	},
 	{
 		"wojciech-kulik/xcodebuild.nvim",
