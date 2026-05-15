@@ -1,0 +1,1 @@
+-- nvim-spectre is loaded; commands are available on demand.

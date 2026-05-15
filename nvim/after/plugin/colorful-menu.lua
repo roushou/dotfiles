@@ -1,0 +1,2 @@
+-- colorful-menu.nvim is configured through blink.cmp's draw components.
+-- The plugin is loaded as a dependency; no standalone setup() call needed.

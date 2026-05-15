@@ -1,0 +1,1 @@
+-- swift.vim is a vimscript plugin with no Lua config needed.
