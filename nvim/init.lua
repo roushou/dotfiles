@@ -80,11 +80,52 @@ vim.pack.add({
 
 require("lsp")
 
--- Treesitter must be set up BEFORE the colorscheme so that catppuccin's
--- treesitter integration can properly link highlight groups.
-local treesitter_config = require("plugins.treesitter")
-require("nvim-treesitter").setup(treesitter_config)
+-- Treesitter
+local ts = require("plugins.treesitter")
+require("nvim-treesitter").setup({})
+require("nvim-treesitter").install(ts.ensure_installed)
 
+-- Enable treesitter highlighting + indentation per filetype
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = ts.filetypes,
+    callback = function()
+        vim.treesitter.start()
+        vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+    end,
+})
+
+-- Textobjects
+local textobjects = require("nvim-treesitter-textobjects")
+textobjects.setup(ts.textobjects)
+
+-- Select keymaps
+local select_mod = require("nvim-treesitter-textobjects.select")
+vim.keymap.set({ "x", "o" }, "af", function()
+    select_mod.select_textobject("@function.outer")
+end)
+vim.keymap.set({ "x", "o" }, "if", function()
+    select_mod.select_textobject("@function.inner")
+end)
+vim.keymap.set({ "x", "o" }, "ac", function()
+    select_mod.select_textobject("@class.outer")
+end)
+
+-- Move keymaps
+local move_mod = require("nvim-treesitter-textobjects.move")
+vim.keymap.set({ "n", "x", "o" }, "]m", function()
+    move_mod.goto_next_start("@function.outer")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]o", function()
+    move_mod.goto_next_start({ "@loop.inner", "@loop.outer" })
+end)
+vim.keymap.set({ "n", "x", "o" }, "]s", function()
+    move_mod.goto_next_start("@local.scope", "locals")
+end)
+vim.keymap.set({ "n", "x", "o" }, "]z", function()
+    move_mod.goto_next_start("@fold", "folds")
+end)
+
+-- Colorscheme (must come after treesitter setup for highlight group linking)
 local catppuccin = require("plugins.catppuccin")
 require("catppuccin").setup(catppuccin.config)
 vim.cmd.colorscheme("catppuccin")
