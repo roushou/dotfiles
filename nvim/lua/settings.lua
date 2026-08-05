@@ -20,10 +20,13 @@ opt.laststatus = 3
 -- opt.cmdheight = 0
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "cpp", "wgsl", "go", "swift", "solidity" },
+    pattern = { "cpp", "wgsl", "go", "swift", "solidity", "odin" },
     callback = function()
         vim.opt_local.shiftwidth = 4
         vim.opt_local.tabstop = 4
+        if vim.bo.filetype == "odin" then
+            vim.opt_local.expandtab = false
+        end
     end,
 })
 
@@ -41,4 +44,4 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
-vim.filetype.add({ extension = { mdx = "mdx" } })
+vim.filetype.add({ extension = { mdx = "mdx", odin = "odin" } })

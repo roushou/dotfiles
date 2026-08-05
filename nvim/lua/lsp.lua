@@ -186,3 +186,11 @@ vim.lsp.config("clangd", {
     capabilities = blink_capabilities(),
 })
 vim.lsp.enable("clangd")
+
+vim.lsp.config("ols", {
+	cmd = { "ols" },
+	filetypes = { "odin" },
+	root_markers = { "ols.json", "odinfmt.json", ".git" },
+	capabilities = blink_capabilities(),
+})
+vim.lsp.enable("ols")
