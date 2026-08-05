@@ -9,7 +9,7 @@ end)
 
 config.font = wezterm.font("JetBrains Mono")
 config.font_size = 18.0
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "Kanagawa (Gogh)"
 config.enable_tab_bar = false
 config.default_cursor_style = "SteadyBlock"
 config.warn_about_missing_glyphs = false

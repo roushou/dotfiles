@@ -7,7 +7,6 @@ end
 
 vim.pack.add({
     -- Colorscheme
-    { src = gh("catppuccin/nvim"),                name = "catppuccin" },
 
     -- Mini plugins
     { src = gh("echasnovski/mini.nvim"),          name = "mini.nvim",        version = vim.version.range("*") },
@@ -76,6 +75,7 @@ vim.pack.add({
     -- Go
     { src = gh("ray-x/go.nvim"),                       name = "go.nvim" },
     { src = gh("ray-x/guihua.lua"),                    name = "guihua.lua" },
+	{ src = gh("rebelot/kanagawa.nvim"), name = "kanagawa" },
 })
 
 require("lsp")
@@ -126,6 +126,15 @@ vim.keymap.set({ "n", "x", "o" }, "]z", function()
 end)
 
 -- Colorscheme (must come after treesitter setup for highlight group linking)
-local catppuccin = require("plugins.catppuccin")
-require("catppuccin").setup(catppuccin.config)
-vim.cmd.colorscheme("catppuccin")
+require("kanagawa").setup({
+	colors = {
+		theme = {
+			all = {
+				ui = {
+					bg_gutter = "none",
+				},
+			},
+		},
+	},
+})
+vim.cmd.colorscheme("kanagawa")
