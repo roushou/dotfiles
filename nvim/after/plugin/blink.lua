@@ -24,7 +24,7 @@ require("blink.cmp").setup({
 			auto_show = true,
 			treesitter_highlighting = true,
 			window = {
-				border = "rounded",
+				border = "single",
 			},
 		},
 	},
