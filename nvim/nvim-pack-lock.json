@@ -49,14 +49,6 @@
       "rev": "a04ad0dbc725134edbee3a5eea29290976695357",
       "src": "https://github.com/kdheepak/lazygit.nvim"
     },
-    "lspkind.nvim": {
-      "rev": "c7274c48137396526b59d86232eabcdc7fed8a32",
-      "src": "https://github.com/onsails/lspkind.nvim"
-    },
-    "mason.nvim": {
-      "rev": "8e921c2b68571e978db5d4d3fef9c9a7f8755473",
-      "src": "https://github.com/williamboman/mason.nvim"
-    },
     "mini.nvim": {
       "rev": "a995fe9cd4193fb492b5df69175a351a74b3d36b",
       "src": "https://github.com/echasnovski/mini.nvim",
@@ -112,29 +104,13 @@
       "src": "https://github.com/mrcjkb/rustaceanvim",
       "version": "6.0.0 - 7.0.0"
     },
-    "snacks.nvim": {
-      "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
-      "src": "https://github.com/folke/snacks.nvim"
-    },
     "swift.vim": {
       "rev": "75990ecbcaccae5cfb77fb847a7bfa0b925b858d",
       "src": "https://github.com/keith/swift.vim"
     },
-    "telescope.nvim": {
-      "rev": "7d324792b7943e4aa16ad007212e6acc6f9fe335",
-      "src": "https://github.com/nvim-telescope/telescope.nvim"
-    },
     "trouble.nvim": {
       "rev": "bd67efe408d4816e25e8491cc5ad4088e708a69a",
       "src": "https://github.com/folke/trouble.nvim"
-    },
-    "xcodebuild-nvim-preview": {
-      "rev": "863260fe5fa0177807f4afda92aacc278dfc3ff1",
-      "src": "https://github.com/wojciech-kulik/xcodebuild-nvim-preview"
-    },
-    "xcodebuild.nvim": {
-      "rev": "a123eab96c3b5a002c25e3f7845eff556d09e5a5",
-      "src": "https://github.com/wojciech-kulik/xcodebuild.nvim"
     }
   }
 }
