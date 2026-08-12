@@ -7,6 +7,7 @@ end
 
 vim.pack.add({
     -- Colorscheme
+    { src = gh("rebelot/kanagawa.nvim"), name = "kanagawa" },
 
     -- Mini plugins
     { src = gh("echasnovski/mini.nvim"),          name = "mini.nvim",        version = vim.version.range("*") },
@@ -75,7 +76,6 @@ vim.pack.add({
     -- Go
     { src = gh("ray-x/go.nvim"),                       name = "go.nvim" },
     { src = gh("ray-x/guihua.lua"),                    name = "guihua.lua" },
-	{ src = gh("rebelot/kanagawa.nvim"), name = "kanagawa" },
 })
 
 require("lsp")
