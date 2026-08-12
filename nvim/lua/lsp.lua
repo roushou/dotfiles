@@ -227,7 +227,7 @@ vim.lsp.enable("ols")
 
 vim.lsp.config("sourcekit", {
 	cmd = { "sourcekit-lsp" },
-	filetypes = { "swift", "c", "cpp", "objective-c", "objective-cpp" },
+	filetypes = { "swift" },
 	root_markers = { "Package.swift", ".git" },
 	capabilities = blink_capabilities(),
 })
