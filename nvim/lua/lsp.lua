@@ -19,13 +19,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			map("n", "K", vim.lsp.buf.hover, { buffer = args.buf })
 		end
 
-		map("n", "[d", function()
-			vim.diagnostic.jump({ count = -1 })
-		end)
-		map("n", "]d", function()
-			vim.diagnostic.jump({ count = 1 })
-		end)
-		map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>")
+		map("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<cr>", { buffer = args.buf })
 		if vim.bo[args.buf].filetype == "rust" then
 			map("n", "<leader>ca", function()
 				vim.cmd.RustLsp("codeAction")
