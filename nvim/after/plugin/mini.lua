@@ -1,4 +1,10 @@
-require("mini.ai").setup()
+require("mini.ai").setup({
+	mappings = {
+		-- g[/g] are claimed by gitsigns hunk navigation (after/plugin/gitsigns.lua)
+		goto_left = "",
+		goto_right = "",
+	},
+})
 require("mini.comment").setup()
 require("mini.pairs").setup()
 require("mini.notify").setup()
