@@ -1,0 +1,40 @@
+command = /opt/homebrew/bin/nu
+
+theme = Kanagawa Wave
+
+macos-titlebar-style = tabs
+macos-window-buttons = hidden
+macos-option-as-alt = true
+
+# Replace Ghostty tabs with tmux windows
+keybind = super+t=text:\x01c
+keybind = ctrl+tab=text:\x1b[9;5u
+keybind = ctrl+shift+tab=text:\x1b[9;6u
+
+# Jump to tmux window by number
+# Ghostty 1.2.0+ also ships default super+digit_N -> goto_tab bindings
+# (physical key names) that hijack these keys. The digit_N triggers must be
+# rebound too, otherwise Cmd+1..9 switch Ghostty tabs instead of tmux windows.
+keybind = super+1=text:\x011
+keybind = super+digit_1=text:\x011
+keybind = super+2=text:\x012
+keybind = super+digit_2=text:\x012
+keybind = super+3=text:\x013
+keybind = super+digit_3=text:\x013
+keybind = super+4=text:\x014
+keybind = super+digit_4=text:\x014
+keybind = super+5=text:\x015
+keybind = super+digit_5=text:\x015
+keybind = super+6=text:\x016
+keybind = super+digit_6=text:\x016
+keybind = super+7=text:\x017
+keybind = super+digit_7=text:\x017
+keybind = super+8=text:\x018
+keybind = super+digit_8=text:\x018
+keybind = super+9=text:\x019
+keybind = super+digit_9=text:\x019
+keybind = super+0=text:\x0110
+
+# Previous/next tmux window
+keybind = super+shift+[=text:\x01p
+keybind = super+shift+]=text:\x01n
