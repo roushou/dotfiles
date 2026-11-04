@@ -1,6 +1,6 @@
 command = /opt/homebrew/bin/nu
 
-theme = Kanagawa Wave
+theme = /Users/roushou/.config/ghostty/themes/nordic
 
 macos-titlebar-style = tabs
 macos-window-buttons = hidden
